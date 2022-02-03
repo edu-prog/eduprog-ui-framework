@@ -37,6 +37,8 @@ object-assign
  * Released under the MIT License.
  */
 
+/*! For license information please see index.js.LICENSE.txt */
+
 /**
  * @license React
  * react-dom.production.min.js
