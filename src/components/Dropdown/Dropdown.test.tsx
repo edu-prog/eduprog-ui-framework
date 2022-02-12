@@ -4,11 +4,9 @@ import Button from "@components/Button/Button";
 import React from "react";
 
 describe("Dropdown testing", () => {
-  it("Dropdown toggle", () => {
+  it("Dropdown hidden", () => {
     const dropdown = shallow(
-      <Dropdown direction="top-center" toggle={<Button>Open</Button>}>
-        dropdown-content
-      </Dropdown>
+      <Dropdown direction="top-center">dropdown-content</Dropdown>
     );
 
     expect(
@@ -16,8 +14,14 @@ describe("Dropdown testing", () => {
         .find(".dropdown-transition")
         .hasClass("dropdown-transition-active")
     ).toEqual(false);
+  });
 
-    dropdown.find(".dropdown-toggle").simulate("click");
+  it("Dropdown open", () => {
+    const dropdown = shallow(
+      <Dropdown direction="top-center" open>
+        dropdown-content
+      </Dropdown>
+    );
 
     expect(
       dropdown
@@ -46,9 +50,7 @@ describe("Dropdown testing", () => {
 
     dropdownDirectionItems.forEach((direction) => {
       const dropdown = shallow(
-        <Dropdown direction={direction} toggle={<Button>Open</Button>}>
-          dropdown-content
-        </Dropdown>
+        <Dropdown direction={direction}>dropdown-content</Dropdown>
       );
 
       expect(
@@ -59,30 +61,19 @@ describe("Dropdown testing", () => {
 
   it("Dropdown blur rendering", () => {
     const dropdown = shallow(
-      <Dropdown direction="bottom-center" toggle={<Button>Open</Button>}>
+      <Dropdown direction="bottom-center" open>
         dropdown-content
       </Dropdown>
     );
 
-    dropdown.find(".dropdown-toggle").simulate("click");
-
     expect(dropdown.find(".dropdown-transition-active").text()).toEqual(
       "dropdown-content"
     );
-
-    dropdown.simulate("blur");
-
-    expect(dropdown.find(".dropdown-transition-active").length).toEqual(0);
   });
 
   it("Dropdown additional rendering", () => {
     const dropdown = shallow(
-      <Dropdown
-        direction="bottom-center"
-        toggle={<Button>Open</Button>}
-        clearly
-        fullwidth
-      >
+      <Dropdown direction="bottom-center" clearly fullwidth>
         dropdown-content
       </Dropdown>
     );
