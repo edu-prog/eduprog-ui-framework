@@ -44,6 +44,9 @@ export type ButtonPropsType = defaultProps & {
    */
   type?: "button" | "reset" | "submit";
 
+  /**
+   * Выравнивание лейбла кнопки
+   */
   labelJustifyContent?: "center" | "space-around";
 
   labelAlignItems?: "center";
