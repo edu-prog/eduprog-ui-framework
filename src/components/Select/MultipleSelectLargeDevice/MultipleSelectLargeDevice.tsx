@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import "./MultipleSelectLargeDevice.scss";
 import BaseInput from "@components/Inputs/BaseInput/BaseInput";
 import Dropdown from "@components/Dropdown/Dropdown";
@@ -16,11 +16,14 @@ const MultipleSelectLargeDevice: FC<MultipleSelectPropsType<any>> = ({
   onChange,
   value = [],
 }) => {
-  const SelectToggle = (
+  const [open, setOpen] = useState(false);
+
+  const SelectToggle = () => (
     <BaseInput
       label={label}
       defaultValue={value?.map((item) => item.name).join(", ")}
       cursor="pointer"
+      onClick={() => setOpen(!open)}
       readonly
       rightAdditional={
         <svg
@@ -72,10 +75,13 @@ const MultipleSelectLargeDevice: FC<MultipleSelectPropsType<any>> = ({
 
   return (
     <div className="multiple-select">
+      <SelectToggle />
+
       <Dropdown
         direction="bottom-center"
-        toggle={SelectToggle}
         clearly
+        open={open}
+        onClose={() => setOpen(!open)}
         dismissible="outside"
         fullwidth
       >

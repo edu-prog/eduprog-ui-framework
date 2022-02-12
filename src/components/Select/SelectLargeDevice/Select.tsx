@@ -20,13 +20,15 @@ const SelectLargeDevice: FC<ISelectProps<any>> = ({
   defaultValue,
   onChange,
 }) => {
+  const [open, setOpen] = useState(false);
   const [value, setValue] = useState(defaultValue);
 
-  const SelectToggle = (
+  const SelectToggle = () => (
     <BaseInput
       label={label}
       defaultValue={value ? value.name : ""}
       cursor="pointer"
+      onClick={() => setOpen(!open)}
       readonly
       rightAdditional={
         <svg
@@ -66,15 +68,19 @@ const SelectLargeDevice: FC<ISelectProps<any>> = ({
   );
 
   return (
-    <Dropdown
-      direction="bottom-center"
-      toggle={SelectToggle}
-      clearly
-      dismissible="outside"
-      fullwidth
-    >
-      {SelectPopup}
-    </Dropdown>
+    <>
+      <SelectToggle />
+      <Dropdown
+        direction="bottom-center"
+        clearly
+        dismissible="outside"
+        fullwidth
+        open={open}
+        onClose={() => setOpen(!open)}
+      >
+        {SelectPopup}
+      </Dropdown>
+    </>
   );
 };
 
