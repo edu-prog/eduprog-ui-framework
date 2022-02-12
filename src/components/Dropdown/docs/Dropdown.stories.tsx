@@ -24,5 +24,4 @@ Playground.args = {
       <Button>Delete</Button>
     </div>
   ),
-  toggle: <Button>Dropdown</Button>,
 };
