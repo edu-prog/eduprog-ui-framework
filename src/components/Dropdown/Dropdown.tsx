@@ -10,10 +10,7 @@ export type DropdownPropsType = defaultProps & {
    */
   children: React.ReactNode;
 
-  /**
-   * Элемент триггер, по клику, на который открывается popup
-   */
-  toggle: React.ReactNode;
+  open?: boolean;
 
   /**
    * Направление раскрытия popup
@@ -40,6 +37,8 @@ export type DropdownPropsType = defaultProps & {
    * Когда dropdown закрывается
    */
   dismissible?: "always" | "toggle" | "outside";
+
+  onClose?: () => void;
 };
 
 /**
@@ -47,41 +46,30 @@ export type DropdownPropsType = defaultProps & {
  */
 const Dropdown: FC<DropdownPropsType> = ({
   children,
-  toggle,
   direction = "bottom-left",
   clearly = false,
   fullwidth = false,
   dismissible = "always",
   style,
+  open = false,
+  onClose,
 }) => {
-  const [active, setActive] = useState(false);
   const dropdownItem = useRef<HTMLDivElement>(null);
   useClickAway(dropdownItem, () => {
-    setActive(false);
+    if (onClose) {
+      onClose();
+    }
   });
-
-  const onClick = () => {
-    setActive(!active);
-  };
 
   return (
     <div
       className={classNames("dropdown", { "dropdown-fullwidth": fullwidth })}
-      onBlur={() => dismissible == "always" && setActive(false)}
+      onBlur={() => (onClose ? dismissible == "always" && onClose() : null)}
       style={style}
     >
       <div
-        className={classNames("dropdown-toggle", {
-          "dropdown-fullwidth": fullwidth,
-        })}
-        onClick={onClick}
-      >
-        {toggle}
-      </div>
-
-      <div
         className={classNames("dropdown-transition", {
-          "dropdown-transition-active": active,
+          "dropdown-transition-active": open,
         })}
       >
         <div
