@@ -1,9 +1,3 @@
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-
 /*!
  * Fuse.js v3.6.1 - Lightweight fuzzy-search (http://fusejs.io)
  * 
