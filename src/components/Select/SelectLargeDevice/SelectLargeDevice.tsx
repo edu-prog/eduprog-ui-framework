@@ -1,9 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import BaseInput from "@components/Inputs/BaseInput/BaseInput";
 import "./SelectLargeDevice.scss";
-import {
-  SelectTypeProps,
-} from "@components/Select/Select/SelectProps";
+import { SelectTypeProps } from "@components/Select/Select/SelectProps";
 import CustomDropdown from "@components/CustomDropdown/CustomDropdown";
 
 const SelectLargeDevice: FC<SelectTypeProps<any>> = ({

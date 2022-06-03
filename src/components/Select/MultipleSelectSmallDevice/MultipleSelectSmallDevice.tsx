@@ -20,7 +20,10 @@ const MultipleSelectSmallDevice: FC<MultipleSelectPropsType<string>> = ({
     const options = event.target.selectedOptions;
 
     [...options].forEach(({ label, value }) => {
-      if (maxSelectedOptions && [...selectedOptions].length > maxSelectedOptions) {
+      if (
+        maxSelectedOptions &&
+        [...selectedOptions].length > maxSelectedOptions
+      ) {
         return;
       }
 
