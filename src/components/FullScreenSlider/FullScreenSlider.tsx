@@ -87,18 +87,6 @@ const FullScreenSlider: FC<FullScreenSliderProps> = ({
     },
   });
 
-  // useEffect(() => {
-  //   if (open) {
-  //     setInterval(() => {
-  //       nextSlide();
-  //     }, 20000);
-  //   }
-  // }, [open, slideIndex]);
-
-  useEffect(() => {
-    console.log(deltaY);
-  }, [deltaY]);
-
   return (
     <div className="FullScreenSlider">
       {open && (
