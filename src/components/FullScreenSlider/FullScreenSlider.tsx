@@ -5,13 +5,19 @@ import { useSwipeable } from "react-swipeable";
 import "./FullScreenSlider.scss";
 
 export interface IFullScreenSliderLayout {
-  image: string;
+  bottom: IFullScreenSliderLayoutItem;
+  background: string;
+}
+
+export interface IFullScreenSliderLayoutItem {
+  text: React.ReactNode;
+  heading: React.ReactNode;
 }
 
 export type FullScreenSliderProps = {
   open?: boolean;
 
-  slides: React.ReactNode[];
+  slides: IFullScreenSliderLayout[];
 
   onClose?: () => void;
 };
@@ -140,7 +146,28 @@ const FullScreenSlider: FC<FullScreenSliderProps> = ({
               </div>
 
               <div className="FullScreenSlider-content">
-                {slides[slideIndex]}
+                <div
+                  style={{
+                    background: `url(${slides[slideIndex].background}) center center / cover no-repeat fixed`,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+
+                <div
+                  style={{
+                    background: "rgba(0, 0, 0, 0.65)",
+                    position: "absolute",
+                    boxShadow: "rgb(0 0 0 / 65%) 0px -20px 20px 18px",
+                    width: "100%",
+                    height: "25%",
+                    bottom: 0,
+                  }}
+                >
+                  {slides[slideIndex].bottom.heading}
+
+                  <div>{slides[slideIndex].bottom.text}</div>
+                </div>
               </div>
             </div>
           </div>

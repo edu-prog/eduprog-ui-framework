@@ -14,22 +14,53 @@ export const Playground = () => {
   const [open, setOpen] = useState(false);
 
   const [data, _] = useState([
-    <div
-      key="1"
-      style={{
-        background: `url(https://res.cloudinary.com/dixvycrtj/image/upload/c_scale,q_60,w_1080,h_2340/v1654440501/stories/image_2022-06-05_17-46-15_rhti1s.webp) center center / cover no-repeat fixed`,
-        width: "100%",
-        height: "100%",
-      }}
-    />,
-    <div
-      key="2"
-      style={{
-        background: `url(https://res.cloudinary.com/dixvycrtj/image/upload/c_scale,h_2340,q_60,w_1080/v1653508345/stories/image_2022-05-25_22-46-17-_1__dit2kv.webp) center center / cover no-repeat fixed`,
-        width: "100%",
-        height: "100%",
-      }}
-    />,
+    {
+      background: "https://i.imgur.com/HtsiRA0.png",
+      bottom: {
+        color: "#fff",
+        heading: (
+          <div style={{ fontSize: "2rem", color: "#fff", textAlign: "center" }}>
+            Как правильно пить воду
+          </div>
+        ),
+        text: (
+          <div
+            style={{
+              fontSize: "1.5rem",
+              padding: "0rem 1rem 1rem 1rem",
+              color: "#fff",
+            }}
+          >
+            В день надо выпивать 2,5–3,7 л мужчинам, 2–2,7 — женщинам. <br />
+            <br />
+            Стакан воды за 30 минут до завтрака — хорошая и полезная привычка.
+          </div>
+        ),
+      },
+    },
+    {
+      background: "https://i.imgur.com/chHggWE.png",
+      bottom: {
+        color: "#fff",
+        heading: (
+          <div style={{ fontSize: "2rem", color: "#fff", textAlign: "center" }}>
+            Разнообразие рациона.
+          </div>
+        ),
+        text: (
+          <div
+            style={{
+              fontSize: "1.5rem",
+              padding: "0rem 1rem 1rem 1rem",
+              color: "#fff",
+            }}
+          >
+            Чтобы снизить вес, не нужно питаться только кефиром и огурцами! Меню
+            должно быть вкусным, полезным, разнообразным.
+          </div>
+        ),
+      },
+    },
   ]);
 
   return (
