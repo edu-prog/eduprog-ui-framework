@@ -68,7 +68,7 @@
     "react-transition-group": "^4.4.2",
     "sass": "^1.49.11",
     "sass-loader": "^12.6.0",
-    "semantic-release": "^19.0.2",
+    "semantic-release": "^19.0.3",
     "storybook-dark-mode": "^1.0.9",
     "storybook-react-i18next": "^1.0.20",
     "style-loader": "^3.3.1",
